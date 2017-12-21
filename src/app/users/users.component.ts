@@ -1,6 +1,6 @@
 //Affinche venga considerato come componente dobbiamo mettere un decoratore per decorarlo come component angular
-import {Component} from '@angular/core';
-import {UserService} from './user.service';
+import {Component,OnInit} from '@angular/core';
+import {UserService} from '../services/user.service';
 
 @Component({
     selector:'app-users',
@@ -9,13 +9,22 @@ import {UserService} from './user.service';
     styleUrls: ['./users.component.css']
 })
 
-export class UsersComponent{
+export class UsersComponent implements OnInit {
     title = 'Questa è una proprietà relativa agli utenti';
 
     users=[];
-    constructor(){
-        const service = new UserService();
-        this.users = service.getUsers();
+
+
+    constructor(private service:UserService){
+
     }
-    
+
+    ngOnInit(){
+      this.users = this.service.getUsers();
+    }
+
+    onDeleteUser(user){
+        this.service.deleteUser(user);
+    }
+
 }
