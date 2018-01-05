@@ -1,11 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <h1>Users Management System</h1>
 
-<div class="main">
+<div class="main" >
     <div class="users">
-        <app-users (selectedUser)="updateUser($event)"></app-users>
+        <app-users (onSelectedUser)="updateUser($event)"></app-users>
     </div>
-    <div class="userDetail" *ngIf="userSelected">
-       <app-user-detail></app-user-detail> 
+    <div class="userDetail" *ngIf="showForm">
+       <app-user-detail [user]="userSelected"></app-user-detail> 
     </div>
 </div>
+
