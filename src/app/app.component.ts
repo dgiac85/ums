@@ -15,6 +15,11 @@ export class AppComponent {
       this.showForm=true;
       this.userSelected=user;
   }
+
+  newUser(){
+    this.userSelected=new User(); //praticamente user Selected è una nuova istanza, ovvero una nuova allocazione di memoria
+    this.showForm=true;
+  }
   
 
 }

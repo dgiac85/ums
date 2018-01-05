@@ -50,4 +50,12 @@ export class UserService{
             this.users[idx]=user;
         }
     }
+
+    createUser(user){
+        let lastItem = this.users.slice(-1)[0];
+        user.id = (lastItem.id)+1;
+       //la create user fa sostanzialmente un push nell'array
+        this.users.splice(this.users.length,0,user); 
+        
+    }
 }
