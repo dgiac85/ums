@@ -1,7 +1,7 @@
 //Affinche venga considerato come componente dobbiamo mettere un decoratore per decorarlo come component angular
 import {Component,OnInit,Output,EventEmitter} from '@angular/core';
 import {UserService} from '../services/user.service';
-import { User } from '../interfaces/user';
+import { User } from '../classes/user';
 
 @Component({
     selector:'app-users',
@@ -13,7 +13,7 @@ import { User } from '../interfaces/user';
 export class UsersComponent implements OnInit {
     users:User[]=[];
 
-    @Output() selectedUser = new EventEmitter<User>();
+    @Output("onSelectedUser") selectedUser = new EventEmitter<User>();
     title = 'Questa è una proprietà relativa agli utenti';
 
     constructor(private service:UserService){
@@ -29,7 +29,9 @@ export class UsersComponent implements OnInit {
     }
 
     onSelectedUser(user){
-        this.selectedUser.emit(user); //emettendolo, l' app component lo ascolta
+        const userCopy=Object.assign({},user)
+        this.selectedUser.emit(userCopy); //emettendolo, l' app component lo ascolta
+        //a userCopy diamo soltanto una copia dell'utente selezionato
     }
 
 }

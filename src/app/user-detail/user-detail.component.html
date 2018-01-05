@@ -1,18 +1,19 @@
-{{userSelected | json}}
+<!--{{user | json}}-->
 <form>
+  <input type="hidden" name="id" [(ngModel)]="user.id">
   <div class="form-group">
     <label for="firstname">First Name</label>
-    <input name="firstname" id="firstname">
+    <input [(ngModel)]="user.name" name="thename" id="name">
   </div>
   <div class="form-group">
     <label for="surname">Surname</label>
-    <input name="surname" id="surname">
+    <input [(ngModel)]="user.surname" name="thesurname" id="surname">
     </div>
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="email" id="email">
+    <input [(ngModel)]="user.email" type="email" name="theemail" id="email">
   </div>
   <div class="form-group">
-    <button class="btn-save">SAVE</button>
+    <button class="btn-save" (click)="saveUser()">SAVE</button>
   </div>
 </form> 
