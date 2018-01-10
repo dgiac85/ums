@@ -9,6 +9,8 @@ import {UserService} from './services/user.service';
 import { UserComponent } from './user/user.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AngularFontAwesomeModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
