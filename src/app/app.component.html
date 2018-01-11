@@ -1,8 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="container-fluid">
+<app-nav (onNewUser)="newUser()"></app-nav>
+<div class="container">
     <h1>Users Management System</h1>
-    <a href='#' (click)='newUser()'>New User</a>
-
+    <app-modal-basic></app-modal-basic>
     <div class="row">
         <div class="col-md-8">
             <app-users (onSelectedUser)="updateUser($event)"></app-users>
