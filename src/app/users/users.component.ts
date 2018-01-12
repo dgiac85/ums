@@ -14,7 +14,6 @@ export class UsersComponent implements OnInit {
     users:User[]=[];
 
     @Output("onSelectedUser") selectedUser = new EventEmitter<User>();
-    title = 'Questa è una proprietà relativa agli utenti';
 
     constructor(private service:UserService){
 

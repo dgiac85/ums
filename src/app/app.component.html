@@ -1,14 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-nav (onNewUser)="newUser()"></app-nav>
+<app-nav></app-nav>
 <div class="container">
     <h1>Users Management System</h1>
-    <app-modal-basic></app-modal-basic>
     <div class="row">
-        <div class="col-md-8">
-            <app-users (onSelectedUser)="updateUser($event)"></app-users>
-        </div>        
-        <div class="col-md-4" *ngIf="showForm">
-            <app-user-detail [user]="userSelected"></app-user-detail> 
+        <div class="col-12">
+            <router-outlet></router-outlet>
         </div>
     </div>
 </div>
