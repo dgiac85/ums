@@ -30,4 +30,8 @@ export class UserComponent implements OnInit {
     this.userSelected.emit(this.user);
   }
 
+  showUserDetail(){
+    this.route.navigate(['users',this.user.id]);
+  }
+
 }

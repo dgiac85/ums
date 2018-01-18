@@ -1,16 +1,20 @@
 <!--{{user | json}}-->
-<form #f="ngForm"> {{f.form.value | json}}
-  <input type="hidden" name="id" *ngIf="user.id" [(ngModel)]="user.id">
-  <div class="form-group">
-    <label for="firstname">First Name</label>
-    <input class="form-control" [(ngModel)]="user.name" name="thename" id="name">
-  </div>
-  <div class="form-group">
-    <label for="surname">Surname</label>
-    <input class="form-control" [(ngModel)]="user.surname" name="thesurname" id="surname">
-    </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input class="form-control" [(ngModel)]="user.email" type="email" name="theemail" id="email">
-  </div>
-</form> 
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <td>{{user.name}}</td>
+  </tr>
+  <tr>
+      <th>Surname</th>
+      <td>{{user.surname}}</td>
+  </tr>
+  <tr>
+      <th>Email</th>
+      <td>{{user.email}}</td>
+  </tr>
+  <tfoot>
+    <tr>
+      <td colspan="2"><button class="btn btn-primary" (click)="backToUsers()">Back</button></td>
+    </tr>
+  </tfoot>
+</table>
