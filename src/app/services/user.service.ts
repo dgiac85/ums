@@ -1,12 +1,9 @@
 import {User} from '../classes/user';
 import { Injectable } from '@angular/core';
 import { UserComponent } from '../user/user.component';
+import { HttpClient } from '@angular/common/http';
 
-
-export class UserService{
-
-    users:Array<User>=[ //al posto di Array<User> si può inserire solo User[]
-        {
+ /*{
             id: 1,
             name: 'Giacomo1',
             surname: 'Delfini1',
@@ -29,11 +26,26 @@ export class UserService{
             name: 'Giacomo4',
             surname: 'Delfini4',
             email: 'delfini4giacomo@gmail.com'
-        },
+        },*/
 
-    ];
+@Injectable()
+export class UserService {
+
+    users: User[]=[]; //al posto di Array<User> si può inserire solo User[]
+
+    private APIURL = 'http://localhost:8000/users';
+
+    constructor(private http:HttpClient){
+
+    }
 
     getUsers(){
+        this.http.get(this.APIURL).subscribe(
+            data=> {console.log(data)
+            },
+            error => console.log(error.message);
+
+        );
         return this.users;
     }
 
