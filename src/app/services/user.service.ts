@@ -40,13 +40,16 @@ export class UserService {
     }
 
     getUsers(){
-        this.http.get(this.APIURL).subscribe(
+        /*this.http.get(this.APIURL).subscribe(
             data=> {console.log(data)
             },
-            error => console.log(error.message);
+            error => {console.log(error.message)}
 
         );
-        return this.users;
+        return this.users;*/
+        //return una promise;o
+        return this.http.get(this.APIURL);//ritorna un observable
+
     }
 
     getUser(id:number):User{
