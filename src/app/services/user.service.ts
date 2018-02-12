@@ -52,8 +52,9 @@ export class UserService {
 
     }
 
-    getUser(id:number):User{
-        return this.users.find(user=>user.id===id);
+    getUser(id:number){
+        //return this.users.find(user=>user.id===id);
+        return this.http.get(this.APIURL+'/'+id);
     }
 
     deleteUser(user){

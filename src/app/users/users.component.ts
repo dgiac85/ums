@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
       //this.users = this.service.getUsers();
       //we subscribe to the service
       this.service.getUsers().subscribe(
-          response => this.users = response.data
+          response => this.users = response['data']
       );
     }
 

@@ -10,13 +10,23 @@ import {ActivatedRoute,Router} from '@angular/router';
 })
 export class UserDataComponent implements OnInit {
 
-  private user:User;
+  public user:User;
+  public title="User Detail";
+  //nel costruttore vanno i providers
   constructor(private userService:UserService, private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit() {
+
+    this.user=new User();
+   
     this.route.params.subscribe(
-      (params) => {
+      /*(params) => {
         this.user= this.userService.getUser(+params.id);
+      }*/
+      (params)=> {
+        this.userService.getUser(+params.id).subscribe(
+          response => this.user = response['data']
+        );
       }
     );
   }
