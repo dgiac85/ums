@@ -1,4 +1,5 @@
 import {User} from '../classes/user';
+import {UserInterface} from '../interfaces/user';
 import { Injectable } from '@angular/core';
 import { UserComponent } from '../user/user.component';
 import { HttpClient } from '@angular/common/http';
@@ -64,11 +65,13 @@ export class UserService {
         }
     }
 
-    updateUser(user:User){
-        const idx=this.users.findIndex((v) => v.id == user.id);
+    updateUser(user:UserInterface){
+        /*const idx=this.users.findIndex((v) => v.id == user.id);
         if (idx !== -1) {
             this.users[idx]=user;
-        }
+        }*/
+        user['_method']='PUT';
+        return this.http.post(this.APIURL + '/'+ user.id, user)
     }
 
     createUser(user){
