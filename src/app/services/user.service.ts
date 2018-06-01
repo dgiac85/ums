@@ -74,11 +74,7 @@ export class UserService {
         return this.http.post(this.APIURL + '/'+ user.id, user)
     }
 
-    createUser(user){
-        let lastItem = this.users.slice(-1)[0];
-        user.id = (lastItem.id)+1;
-       //la create user fa sostanzialmente un push nell'array
-        this.users.splice(this.users.length,0,user); 
-        
+    createUser(user:UserInterface){
+       return this.http.post(this.APIURL,user);
     }
 }
