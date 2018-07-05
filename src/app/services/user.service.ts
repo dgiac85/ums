@@ -66,15 +66,11 @@ export class UserService {
     }
 
     updateUser(user:UserInterface){
-        /*const idx=this.users.findIndex((v) => v.id == user.id);
-        if (idx !== -1) {
-            this.users[idx]=user;
-        }*/
         user['_method']='PUT';
         return this.http.post(this.APIURL + '/'+ user.id, user)
     }
 
     createUser(user:UserInterface){
-       return this.http.post(this.APIURL,user);
+       return this.http.post(this.APIURL ,user);
     }
 }

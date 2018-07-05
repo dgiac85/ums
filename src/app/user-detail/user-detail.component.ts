@@ -45,21 +45,39 @@ export class UserDetailComponent implements OnInit {
 
   saveUser(){
     if (this.user.id>0){
-      this.userService.updateUser(this.user).subscribe(response => {
-        const user = response ['data'] as User;
-        if (response['success']){
-          //bisogna simulare il metodo PUT con una POST perchè laravel nelle sue routes vuole che venga fatta una put per aggiornare l'utente, mentre con il front end si fa una richiesta POST
-          alert('User ' + user.name + ' Modificato correttamente') 
-        } else {
-          alert (response['message']);
-        }
-        this.router.navigate(['users']);
-      });
+     this.updateUser(this.user);
+       
     }
     else{
-      this.userService.createUser(this.user);
+     this.createUser(this.user);
     }
     //this.router.navigate(['users']);
+  }
+
+  createUser(user:User){
+    this.userService.createUser(this.user).subscribe(response => {
+     
+      if (response['success']){
+        //bisogna simulare il metodo PUT con una POST perchè laravel nelle sue routes vuole che venga fatta una put per aggiornare l'utente, mentre con il front end si fa una richiesta POST
+        alert('User ' + user.name + ' Creato correttamente') 
+      } else {
+        alert (response['message']);
+      }
+      this.router.navigate(['users']);
+    });
+  }
+
+  updateUser(user:User){
+    this.userService.updateUser(this.user).subscribe(response => {
+     
+      if (response['success']){
+        //bisogna simulare il metodo PUT con una POST perchè laravel nelle sue routes vuole che venga fatta una put per aggiornare l'utente, mentre con il front end si fa una richiesta POST
+        alert('User ' + user.name + ' Modificato correttamente') 
+      } else {
+        alert (response['message']);
+      }
+      this.router.navigate(['users']);
+    });
   }
 
   resetForm(form){
