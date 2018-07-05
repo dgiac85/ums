@@ -2,6 +2,7 @@
 import {Component,OnInit,Output,EventEmitter} from '@angular/core';
 import {UserService} from '../services/user.service';
 import { User } from '../classes/user';
+import {ActivatedRoute,Router} from '@angular/router';
 
 @Component({
     selector:'app-users',
@@ -15,7 +16,7 @@ export class UsersComponent implements OnInit {
 
     @Output("onSelectedUser") selectedUser = new EventEmitter<User>();
 
-    constructor(private service:UserService){
+    constructor(private service:UserService, private router: Router, private route: ActivatedRoute){
 
     }
 
@@ -28,7 +29,12 @@ export class UsersComponent implements OnInit {
     }
 
     onDeleteUser(user){
-        this.service.deleteUser(user);
+        this.service.deleteUser(user).subscribe(
+            response => {
+                alert (response['message']);
+                window.location.reload();
+            }
+        );
     }
 
     onSelectedUser(user){
