@@ -28,13 +28,19 @@ export class UsersComponent implements OnInit {
       );
     }
 
-    onDeleteUser(user){
-        this.service.deleteUser(user).subscribe(
-            response => {
-                alert (response['message']);
-                window.location.reload();
-            }
-        );
+    onDeleteUser(user:User){
+//utilizzare una confirm
+
+        const deleteUser= confirm ('Do you really want to delete user ' + user.name + ' ' + (user.lastname==null? '' : user.lastname)+'?');
+        if (deleteUser){
+            this.service.deleteUser(user).subscribe(
+                response => {
+                    alert (response['message']);
+                    const idx=this.users.indexOf(user);
+                    this.users.splice(idx,1);
+                }
+            );
+        }
     }
 
     onSelectedUser(user){
