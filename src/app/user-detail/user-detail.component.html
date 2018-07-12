@@ -1,21 +1,45 @@
 
-<form #f="ngForm"> {{f.form.value | json}}
+<form #f="ngForm"> 
   <input type="hidden" name="id" [(ngModel)]="user.id">
-  <div class="form-group">
-    <label for="firstname">First Name</label>
-    <input class="form-control" [(ngModel)]="user.name" name="thename" id="name">
-  </div>
-  <div class="form-group">
-    <label for="surname">Surname</label>
-    <input class="form-control" [(ngModel)]="user.lastname" name="thelastname" id="surname">
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <label for="firstname">First Name</label>
+      <input #firstName="ngModel" required pattern="[a-zA-Z\s]*" minlength="3" class="form-control" [(ngModel)]="user.name" name="thename" id="name">
+      <div *ngIf="firstName.dirty && firstName.touched && firstName.invalid">
+        <div class="alert-danger" *ngIf="firstName.errors.required">
+          The field is required
+        </div>
+        <div class="alert-danger" *ngIf="firstName.errors.minlength">
+          The min length of first name is {{firstName.errors.minlength.requiredLength}} chars
+        </div>
+        <div class="alert-danger" *ngIf="firstName.errors.pattern">
+          The field first name patterne is {{firstName.errors.pattern.requiredPattern}}
+        </div>
+      </div>
     </div>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <input class="form-control" [(ngModel)]="user.email" type="email" name="theemail" id="email">
+    <div class="form-group col-sm-6">
+      <label for="surname">Surname</label>
+      <input #surname="ngModel" required minlength="3" class="form-control" [(ngModel)]="user.lastname" name="thelastname" id="surname">
+      <div *ngIf="surname.dirty && surname.touched && surname.invalid">
+        <div class="alert-danger" *ngIf="surname.errors.required">
+          The field is required
+        </div>
+        <div class="alert-danger" *ngIf="surname.errors.minlength">
+          The min length of surname is {{surname.errors.minlength.requiredLength | json}} chars
+        </div>
+      </div>
+    </div>
+  </div> 
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <label for="email">Email</label>
+      <input class="form-control" [(ngModel)]="user.email" type="email" name="theemail" id="email">
+    </div>
   </div>
   <div class="form-group">
     <button class="btn btn-secondary" (click)="resetForm(f.form)">RESET</button>
     <button class="btn btn-primary" (click)="backToUsers()">BACK</button>
-    <button class="btn btn-success" (click)="saveUser()">SAVE</button>
+    <!-- f.invalid significa che se il form è invalido toglie la possibilita di fare save -->
+    <button [disabled]="f.invalid" class="btn btn-success" (click)="saveUser()">SAVE</button>
   </div>
 </form> 
