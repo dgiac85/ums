@@ -19,12 +19,12 @@ export class UserDataComponent implements OnInit {
 
     this.user=new User();
    
-    this.route.params.subscribe(
+    this.route.paramMap.subscribe(
       /*(params) => {
         this.user= this.userService.getUser(+params.id);
       }*/
-      (params)=> {
-        this.userService.getUser(+params.id).subscribe(
+      (params)=> { //lóggetto che viene passato alla closure proviene da paramMap
+        this.userService.getUser(+params.get('id')).subscribe(
           response => this.user = response['data']
         );
       }
