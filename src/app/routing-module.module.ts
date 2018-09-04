@@ -6,6 +6,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserDataComponent } from './user-data/user-data.component';
 
 import { UsersComponent } from './users/users.component';
+import { LoginComponent } from './login/login.component';
 import { RouteGuardService} from './route-guard.service';
 
 import {RouterModule, Routes} from '@angular/router';
@@ -33,6 +34,10 @@ const routes : Routes = [
   {
     path: 'users/:id',
     component: UserDataComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 
 ]
