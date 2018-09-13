@@ -7,6 +7,7 @@ import { UserDataComponent } from './user-data/user-data.component';
 
 import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 import { RouteGuardService} from './route-guard.service';
 
 import {RouterModule, Routes} from '@angular/router';
@@ -37,8 +38,15 @@ const routes : Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
-  }
+    component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'signup',
+    component: SignupComponent, //aggiungere il componente
+    pathMatch: 'full'
+  },
+
 
 ]
 

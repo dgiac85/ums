@@ -22,6 +22,7 @@ import {RoutingModuleModule} from './routing-module.module';
 import { RouteGuardService} from './route-guard.service';
 import { AuthService} from './services/auth.service';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { LoginComponent } from './login/login.component';
     NavComponent,
     ModalBasicComponent,
     UserDataComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6 offset-md-3">
-       <form name="loginForm" #f="ngForm" (ngSubmit)="signIn(f)">
+       <form name="signupForm" #f="ngForm" (ngSubmit)="signUp(f)">
           <div class="form-group">
             <label for="email">Email</label>
             <!-- la voce email dopo required serve a creare una sorta di controllo regular expression per la email -->
@@ -15,6 +15,19 @@
             </div>
           </div>
           <div class="form-group">
+              <label for="name">Nome</label>
+              <!-- la voce email dopo required serve a creare una sorta di controllo regular expression per la email -->
+              <input class="form-control" minlength="2" ngModel type="name" #name="ngModel" name="name" id="name">
+              <div *ngIf="name.dirty && name.touched && name.invalid">
+                  <div class="alert-danger" *ngIf="name.errors.required">
+                    The field is required
+                  </div>
+                  <div class="alert-danger" *ngIf="name.errors.minlength">
+                      The field name pattern is {{name.errors.minlength.requiredLength}} chars
+                  </div>
+              </div>
+            </div>
+          <div class="form-group">
             <label for="password">Password</label>
             <input class="form-control" required minlength="6" ngModel type="password" #password="ngModel" name="password" id="password">
             <div *ngIf="password.dirty && password.touched && password.invalid">
@@ -27,9 +40,8 @@
             </div>
           </div>
           <div class="form-group text-center">
-            <button [disabled]='!f.valid' class="btn btn-primary">Log in</button>  
+            <button [disabled]='!f.valid' class="btn btn-primary">Sign Up!</button>  
           </div>        
        </form>
     </div>
 </div>
-

@@ -16,7 +16,7 @@ export class NavComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.isUserLoggedIn
+    this.isUserLoggedIn=this.auth.isUserLoggedIn();
   }
 
   newUser(){
@@ -27,6 +27,16 @@ export class NavComponent implements OnInit {
     e.preventDefault();
     this.auth.logout();
     this.router.navigate(['login']);
+  }
+
+  signIn(e){
+    e.preventDefault();
+    this.router.navigate(['login']);
+  }
+
+  signUp(e){
+    e.preventDefault();
+    this.router.navigate(['signup']);
   }
 
 
