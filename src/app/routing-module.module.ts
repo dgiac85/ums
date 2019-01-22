@@ -29,8 +29,8 @@ const routes : Routes = [
   },
   {
     path: 'users/:id/edit',
-    component: UserDetailComponent,
-    canActivate: [RouteGuardService]
+    component: UserDetailComponent
+    //canActivate: [RouteGuardService]
   },
   {
     path: 'users/:id',
