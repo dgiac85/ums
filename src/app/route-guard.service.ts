@@ -5,7 +5,7 @@ import {AuthService} from './services/auth.service';
 @Injectable()
 export class RouteGuardService implements CanActivate {
 
-  constructor(private router:Router, private auth : AuthService) { }
+  constructor(private router:Router, private auth : AuthService) { } //nel costruttore si ignetiano i servizi
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     //this.router.navigate(['users']); //redireziono a users se non posso accedere alla pagina che sto vietando

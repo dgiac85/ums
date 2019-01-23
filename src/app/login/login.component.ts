@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter,Output } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {AuthService} from "../services/auth.service"
 import {Router} from "@angular/router";
@@ -8,8 +8,9 @@ import {Router} from "@angular/router";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
 
+export class LoginComponent implements OnInit {
+  @Output("onLoggedUser") userLogged = new EventEmitter();
   constructor(private auth:AuthService, private router:Router) { }
 
   ngOnInit() {
@@ -24,7 +25,11 @@ export class LoginComponent implements OnInit {
     }
     let result= this.auth.signIn(form.value.email, form.value.password);
     if (result){
-      this.router.navigate(['/']);
+      //this.userLogged.emit(null);
+      console.log('emesso onLoggedUser');
+      window.location.reload();
+      this.router.navigate(['']);
+
     }
   }
 

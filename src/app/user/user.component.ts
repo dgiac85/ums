@@ -16,6 +16,7 @@ export class UserComponent implements OnInit {
   constructor(private userService:UserService, private route:Router) { }
 
   ngOnInit() {
+    
   }
 
   deleteUser(){

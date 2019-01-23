@@ -16,6 +16,7 @@ export class NavComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) { } //tutta una questione di routing
 
   ngOnInit() {
+    console.log("passa da init")
     this.isUserLoggedIn=this.auth.isUserLoggedIn();
   }
 
@@ -26,17 +27,25 @@ export class NavComponent implements OnInit {
   logout(e){
     e.preventDefault();
     this.auth.logout();
+    this.isUserLoggedIn=this.auth.isUserLoggedIn();
     this.router.navigate(['login']);
   }
 
   signIn(e){
     e.preventDefault();
+    this.isUserLoggedIn=this.auth.isUserLoggedIn();
     this.router.navigate(['login']);
   }
 
   signUp(e){
     e.preventDefault();
+    this.isUserLoggedIn=this.auth.isUserLoggedIn();
     this.router.navigate(['signup']);
+  }
+
+  onLoggedUser(){
+    console.log("sono loggato");
+    this.isUserLoggedIn=this.auth.isUserLoggedIn();
   }
 
 

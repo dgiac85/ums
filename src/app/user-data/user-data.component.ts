@@ -12,7 +12,7 @@ export class UserDataComponent implements OnInit {
 
   public user:User;
   public title="User Detail";
-  //nel costruttore vanno i providers
+  //nel costruttore vanno i providers. In questo modo si iniettano i singleton, che servono a non creare sempre degli oggetti per usare i metodi di determinazione delle classi.
   constructor(private userService:UserService, private route:ActivatedRoute, private router:Router) { }
 
   ngOnInit() {

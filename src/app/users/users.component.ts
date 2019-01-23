@@ -3,6 +3,7 @@ import {Component,OnInit,Output,EventEmitter} from '@angular/core';
 import {UserService} from '../services/user.service';
 import { User } from '../classes/user';
 import {ActivatedRoute,Router} from '@angular/router';
+import {AuthService} from '../services/auth.service';
 
 @Component({
     selector:'app-users',
@@ -11,21 +12,32 @@ import {ActivatedRoute,Router} from '@angular/router';
     styleUrls: ['./users.component.css']
 })
 
+
+
 export class UsersComponent implements OnInit {
     users:User[]=[];
+    //private isUserLoggedIn = false; 
 
     @Output("onSelectedUser") selectedUser = new EventEmitter<User>();
+    private isUserLoggedIn = false; 
 
-    constructor(private service:UserService, private router: Router, private route: ActivatedRoute){
+    constructor(private service:UserService,private auth: AuthService, private router: Router, private route: ActivatedRoute){
 
     }
 
     ngOnInit(){
       //this.users = this.service.getUsers();
       //we subscribe to the service
+      /*this.isUserLoggedIn=this.auth.isUserLoggedIn();
+      if (this.isUserLoggedIn){
+
+      }*/
+      console.log("ciaoooo");
       this.service.getUsers().subscribe(
           response => this.users = response['data']
       );
+
+
     }
 
     onDeleteUser(user:User){
@@ -47,6 +59,10 @@ export class UsersComponent implements OnInit {
         const userCopy=Object.assign({},user)
         this.selectedUser.emit(userCopy); //emettendolo, l' app component lo ascolta
         //a userCopy diamo soltanto una copia dell'utente selezionato
+    }
+
+    onLoggedUser= (value:string) => {
+        alert("Outside of component "+value);
     }
 
 }
