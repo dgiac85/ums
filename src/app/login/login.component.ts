@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 
 export class LoginComponent implements OnInit {
-  @Output("onLoggedUser") userLogged = new EventEmitter();
+  //@Output("onLoggedUser") userLogged = new EventEmitter();
   constructor(private auth:AuthService, private router:Router) { }
 
   ngOnInit() {
@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
     if (result){
       //this.userLogged.emit(null);
       console.log('emesso onLoggedUser');
-      window.location.reload();
       this.router.navigate(['']);
 
     }

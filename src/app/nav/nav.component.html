@@ -29,6 +29,9 @@
       <li class="nav-item text-nowrap">
         <a  *ngIf="!isUserLoggedIn" (click)="signUp($event)" class="nav-link" href="#">Sign up</a>
       </li>
+      <li *ngIf="isUserLoggedIn" class="nav-item text-nowrap">
+        {{username}} CIAO
+      </li>
       <li class="nav-item text-nowrap">
         <a *ngIf="isUserLoggedIn" href="#" class="nav-link" (click)="logout($event)">Sign out</a>
       </li>
